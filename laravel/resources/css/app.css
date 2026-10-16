@@ -1,0 +1,361 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+    REGULAR DEGULAR CSS
+========================= */
+:root {
+    --fade-cyan: #E6F5F5;
+    --fade-blue: #DCF1FF;
+    --fade-lavender: #DADAF0;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0 !important;
+}
+
+[x-cloak] {
+    display: none !important;
+}
+.fade-scrollbar::-webkit-scrollbar,  .fade-scrollbar-transparent::-webkit-scrollbar{
+    width: 6px;
+}
+
+.fade-scrollbar::-webkit-scrollbar-track {
+    background: white;
+}
+
+.fade-scrollbar-transparent::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.5);
+    filter: blur(16px);
+}
+
+.fade-scrollbar::-webkit-scrollbar-thumb , .fade-scrollbar-transparent::-webkit-scrollbar-thumb {
+    background: rgba(90, 102, 140, 0.35);
+    border-radius: 999px;
+}
+
+.rtl-scroll {
+    direction: rtl;
+}
+
+.ltr-content {
+    direction: ltr;
+}
+
+.is-classic-mode .mode-active-nav {
+    background: rgba(65, 78, 103, 0.4);
+    color: #0E2958;
+}
+
+.is-fade-mode .mode-active-nav {
+    background: rgba(59, 130, 246, 0.55);
+    color: #0E2958;
+}
+
+.is-classic-mode .email-toggler-active {
+    background: #6F7890;
+    color: white;
+}
+
+.is-classic-mode .email-toggler-inactive {
+    background: #CDD2DF;
+    color: #8190AA;
+}
+
+.is-fade-mode .email-toggler-active {
+    background: #354E96;
+    color: #E0F1FF;
+}
+
+.is-fade-mode .email-toggler-inactive {
+    background: #9EC9FC;
+    color: #14379A;
+}
+
+.is-classic-mode .menu {
+    background: #C2D2F0;
+    color: #0E2958;
+}
+
+.is-fade-mode .menu {
+    background: #95C4FF;
+    color: #0E2958;
+}
+.is-classic-mode .sync-nudge {
+    background: #C2D2F0;
+    color: #0E2958;
+}
+
+.is-fade-mode .sync-nudge {
+    background: #95C4FF;
+    color: #0E2958;
+}
+
+.is-classic-mode .email-pill {
+    background: #414E67CC;
+    color: white;
+}
+
+.is-fade-mode .email-pill {
+    background: #CBE2FFCC;
+    color: #0E2958;
+}
+
+.tooltip {
+    @apply absolute top-full left-1/2 -translate-x-1/2 mb-2
+           whitespace-nowrap rounded-lg px-2 py-1 text-xs
+           opacity-0 transition-opacity duration-200
+           pointer-events-none z-50 shadow-lg;
+}
+
+.tooltip.inbox {
+    @apply absolute left-16 top-1/2 -translate-y-1/2
+        whitespace-nowrap rounded-lg px-3 py-2 text-xs
+        opacity-0 group-hover:opacity-100
+        transition-opacity duration-200
+        pointer-events-none z-[9999] shadow-lg;
+}
+
+.group:hover .tooltip {
+    opacity: 1;
+}
+
+.is-classic-mode .tooltip {
+    background: rgba(46, 64, 87, 0.9);
+    color: white;
+}
+
+.is-classic-mode .tooltip.inbox {
+    background: rgba(46, 64, 87, 0.9);
+    color: white;
+}
+
+.is-fade-mode .tooltip {
+    background: rgba(224, 241, 255, 0.95);
+    color: #14379A;
+}
+
+.is-fade-mode .tooltip.inbox {
+    background: rgba(224, 241, 255, 0.95);
+    color: #14379A;
+}
+
+#mailboxRegion.is-switching > :not(#mailboxLoadingOverlay) {
+    filter: blur(2px);
+    opacity: 0.35;
+    transform: scale(0.995);
+    transition: all 300ms ease-in-out;
+}
+
+.email-body-frame {
+    border: 0;
+    display: block;
+    overflow: hidden;
+}
+
+/* =========================
+   SYNC NUDGE
+========================= */
+.sync-nudge {
+    animation: syncNudge 1.5s infinite;
+}
+
+@keyframes syncNudge {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(10px);
+    }
+
+    40% {
+        transform: translateX(0);
+    }
+
+    60% {
+        transform: translateX(10px);
+    }
+
+    80% {
+        transform: translateX(0);
+    }
+}
+/* =========================
+   ROTATING GRADIENT
+========================= */
+
+@keyframes rotateGradient {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.gradient-layer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.fade-classic-gradient::before,
+.fade-ai-gradient::before {
+    content: "";
+    position: absolute;
+
+    width: 300vmax;
+    height: 300vmax;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    animation: rotateGradient 40s linear infinite;
+}
+
+.fade-classic-gradient::before {
+    background: linear-gradient(
+        20deg,
+        #c8cdd7 0%,
+        #f6f9ff 100%
+    );
+}
+
+.fade-ai-gradient::before {
+    background: linear-gradient(
+        20deg,
+        #E6F5F5 0%,
+        #DCF1FF 50%,
+        #DADAF0 100%
+    );
+}
+
+/* =========================
+   Aura Gradient
+========================= */
+@keyframes blobOne {
+    0% {
+        transform: translate(-80px, -40px) scale(1);
+    }
+
+    50% {
+        transform: translate(260px, 140px) scale(1.25);
+    }
+
+    100% {
+        transform: translate(80px, 260px) scale(0.95);
+    }
+}
+
+@keyframes blobTwo {
+    0% {
+        transform: translate(80px, 40px) scale(1);
+    }
+
+    50% {
+        transform: translate(-280px, -180px) scale(1.25);
+    }
+
+    100% {
+        transform: translate(-120px, -80px) scale(0.95);
+    }
+    
+}
+
+@keyframes auraFlow {
+    0% {
+        background-position: 0% 20%;
+    }
+
+    100% {
+        background-position: 100% 80%;
+    }
+}
+
+.fade-aura {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(102, 225, 255, 0.28), transparent 38%),
+        radial-gradient(circle at 85% 15%, rgba(153, 166, 255, 0.24), transparent 42%),
+        radial-gradient(circle at 45% 95%, rgba(220, 241, 255, 0.35), transparent 45%),
+        linear-gradient(135deg, #F7FCFF 0%, #EEF8FF 55%, #F4F3FF 100%);
+    background-size: 160% 160%;
+    animation: auraFlow 16s ease-in-out infinite alternate;
+}
+
+.fade-aura::before,
+.fade-aura::after {
+    content: "";
+    position: absolute;
+    border-radius: 9999px;
+    pointer-events: none;
+    filter: blur(110px);
+    opacity: 0.45;
+    z-index: 0;
+}
+
+.fade-aura::before {
+    width: 850px;
+    height: 850px;
+    top: -240px;
+    left: -180px;
+    background: rgba(102, 225, 255, 0.55);
+    animation: blobOne 24s ease-in-out infinite alternate;
+}
+
+.fade-aura::after {
+    width: 900px;
+    height: 900px;
+    right: -260px;
+    top: -160px;
+    background: rgba(153, 166, 255, 0.5);
+    animation: blobTwo 28s ease-in-out infinite alternate;
+}
+
+.fade-aura > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================
+   Fade Hero Stuff
+========================= */
+
+.fade-logo-motion {
+    animation:
+        fadeFloat 6s ease-in-out infinite,
+        fadeGlow 5s ease-in-out infinite alternate;
+    filter: drop-shadow(0 12px 28px rgba(59, 130, 246, 0.22));
+}
+
+@keyframes fadeFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+@keyframes fadeGlow {
+    0% {
+        opacity: 0.82;
+        filter: drop-shadow(0 10px 20px rgba(59, 130, 246, 0.16));
+    }
+
+    100% {
+        opacity: 1;
+        filter: drop-shadow(0 14px 34px rgba(59, 130, 246, 0.32));
+    }
+}
